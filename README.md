@@ -11,6 +11,8 @@
 + See historical order
 + Payment ,Checkout pages
 + Login, Register Pages
+
+
 **Admin Side Features**
 
 + Product List
