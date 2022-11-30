@@ -1,6 +1,6 @@
 # E-Commerce-WebSite-Rest-Api
 
-#User side features
+<>User side features
 
 Search by category
 Sort, Filter by rating, price
@@ -12,7 +12,7 @@ See historical order
 Payment ,Checkout pages
 Login, Register Pages
 
-#Admin Side Features
+<>Admin Side Features
 
 Product List
 Add new products
@@ -29,7 +29,7 @@ See users, and details
 admin and users ( different login )
 
 
-#Teach Stacks Used
+<>Teach Stacks Used
 
 Java
 Spring framework
