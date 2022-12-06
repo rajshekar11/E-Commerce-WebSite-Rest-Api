@@ -19,7 +19,7 @@ public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer adminId;
-	private String adminEmail;
+	private String email;
 	private String adminPassword;
 	
 }

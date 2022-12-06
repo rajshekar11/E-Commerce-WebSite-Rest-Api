@@ -7,14 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.ProductException;
+import com.masai.model.Category;
 import com.masai.model.Product;
-import com.masai.repository.ProductRepository;
+import com.masai.repository.ProductsRepo;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
-	private ProductRepository prep;
+	private ProductsRepo prep;
 
 	@Override
 	public Product addProduct(Product product) throws ProductException {
@@ -31,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 			return products;
 		}
 		else {
-			throw new ProductException("Product is not Found");
+			throw new ProductException("There are no products at the moment");
 		}
 	}
 
@@ -59,13 +60,27 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product removeProduct(Integer pid) throws ProductException {
-	Product	existingProduct = prep.findById(pid).orElseThrow(()->new ProductException("Product does not exist with id :"+pid));
+		Optional<Product> opt =  prep.findById(pid);
+		if(opt.isPresent()) {
+			prep.delete(opt.get());
+			return opt.get();
+		}
+		else {
+			throw new ProductException("Product does not exist with id :"+pid);
+		}
 	
-	prep.delete(existingProduct);
 	
-	return existingProduct ;
-	
-	
+	}
+
+	@Override
+	public List<Product> findByCategory(Category category) throws ProductException {
+		List<Product> products=prep.findByCategory(category);
+		if(products.size()>0) {
+			return products;
+		}
+		else {
+			throw new ProductException("There are no products in this category");
+		}
 	}
 	
 }

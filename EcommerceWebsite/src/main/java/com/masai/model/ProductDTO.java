@@ -31,6 +31,4 @@ public class ProductDTO {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Cart cart;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Order order;
 }
