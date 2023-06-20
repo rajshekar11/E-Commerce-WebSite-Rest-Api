@@ -10,7 +10,9 @@ import com.masai.model.User;
 
 @Repository
 public interface UserRepo extends JpaRepository<User,Integer>{
+	
 	public Optional<User> findByMobile(String string);
+	
 	List<User> findByUserId(Integer userId);
 	
 }
